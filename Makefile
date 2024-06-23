@@ -38,5 +38,11 @@ wasmtime:
 	-cd hello-wasi-http
 	-cargo install wasmtime-cli wasm-tools cargo-component
 	-cargo component build
-	-wasm-tools component wit target/wasm32-wasi/debug/hello-wasi-http.wasm
-	-wasmtime serve -Scommon ./target/wasm32-wasi/debug/hello-wasi-http.wasm	
+	-wasm-tools component wit ~/gitrepos/fermyon/spin/hello-wasi-http/target/wasm32-wasi/debug/hello_wasi_http.wasm
+	-wasmtime serve -Scommon ~/gitrepos/fermyon/spin/hello-wasi-http/target/wasm32-wasi/debug/hello_wasi_http.wasm
+
+
+.PHONY: llm
+llm:
+	-git clone git@github.com:LlamaEdge/LlamaEdge.git
+	-cd LlamaEdge &&chmod +x run-llm.sh && ./run-llm.sh
