@@ -5,14 +5,14 @@ version = "0.1.0"
 ##authors = ["Constanze <einentlein@gmail.com>"]
 description = "Tiny Fermyon Cloud application"
 ##ORIGINALauthors = ["Ryan Levick <me@ryanlevick.com>"]
-##description = "A todo application written in spin"
+##description = "A small application written in spin"
 name = "todo"
 trigger = { type = "http", base = "/" }
 
 
 [[component]]
-id = "todo-api"
-source = "target/wasm32-wasi/release/todo.wasm"
+id = "blog-api"
+source = "target/wasm32-wasi/release/blog.wasm"
 allowed_http_hosts = []
 sqlite_databases = ["default"]
 [component.trigger]
