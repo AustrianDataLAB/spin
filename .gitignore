@@ -10,3 +10,6 @@ target/wasm32-wasi/*
 !target/wasm32-wasi/release
 target/wasm32-wasi/release/*
 !target/wasm32-wasi/release/blog.wasm
+
+spin-operator*
+hello-wasi-http

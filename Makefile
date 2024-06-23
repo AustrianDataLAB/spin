@@ -21,6 +21,7 @@ spin-operator:
 	-kubectl apply -f https://github.com/spinkube/spin-operator/releases/download/v0.2.0/spin-operator.crds.yaml
 
 
+
 .PHONY: application
 application:
 	-git clone https://github.com/spinkube/spin-operator.git
@@ -30,3 +31,12 @@ application:
 	-kubectl apply -f ../../config/samples/variable-explorer.yaml
 	-echo "you need to now run "kubectl port-forward services/variable-explorer 8080:80 , curl http://localhost:8080"
 	-kubectl logs -l core.spinoperator.dev/app-name=variable-explorer
+
+.PHONY: wasmtime
+wasmtime:
+	-git clone https://github.com/sunfishcode/hello-wasi-http.git
+	-cd hello-wasi-http
+	-cargo install wasmtime-cli wasm-tools cargo-component
+	-cargo component build
+	-wasm-tools component wit target/wasm32-wasi/debug/hello-wasi-http.wasm
+	-wasmtime serve -Scommon ./target/wasm32-wasi/debug/hello-wasi-http.wasm	
