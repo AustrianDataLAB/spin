@@ -14,3 +14,5 @@ target/wasm32-wasi/release/*
 spin-operator*
 hello-wasi-http
 LlamaEdge
+http-auth-middleware
+local
