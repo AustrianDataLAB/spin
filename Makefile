@@ -46,3 +46,14 @@ wasmtime:
 llm:
 	-git clone git@github.com:LlamaEdge/LlamaEdge.git
 	-cd LlamaEdge &&chmod +x run-llm.sh && ./run-llm.sh
+
+.PHONY: wash-mac 
+wash-mac:
+	brew install wasmcloud/wasmcloud/wash
+
+.PHONY: componentmodeldemo
+componentmodeldemo:
+	-git clone https://github.com/fermyon/http-auth-middleware.git
+	-cd http-auth-middleware && cargo install --git https://github.com/bytecodealliance/cargo-component --tag v0.4.0 cargo-component --locked && cargo component  build --manifest-path github-oauth/Cargo.toml --release
+	- echo " you must set the github OAuth app in your GitHub Developer Settings "
+	- echo "spin up --build -f example -e CLIENT_ID=<YOUR_GITHUB_APP_CLIENT_ID> -e CLIENT_SECRET=<YOUR_GITHUB_APP_CLIENT_SECRET>"
